@@ -1,0 +1,14 @@
+.text-container {
+    width: 400px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 55px;
+    margin: auto;
+}
+
+.text {
+    font-size: large;
+}
