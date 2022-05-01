@@ -2,12 +2,18 @@ import "./App.css";
 import MyNavbar from "./components/MyNavbar";
 import Jumbotron from "./components/Jumbotron";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from 'react'
 import Home from "./pages/Home";
 import EditUser from "./pages/EditUser";
 import DetailUser from "./pages/DetailUser";
 import CreateUser from "./pages/CreateUser";
 
 function App() {
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "#DCDCDC"
+  }, [])
+
   return (
     <div>
       <div className="main-container">

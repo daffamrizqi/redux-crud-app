@@ -1,6 +1,5 @@
 import React from 'react'
 import Table from '../components/Table'
-import { connect } from 'react-redux'
 
 
 const Home = () => {
@@ -12,4 +11,4 @@ const Home = () => {
     )
 }
 
-export default connect()(Home)
+export default Home
