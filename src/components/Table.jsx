@@ -6,9 +6,35 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchUsersAsync } from '../redux/users/userAction'
 import { Link } from 'react-router-dom'
+import API_URL from '../constants/URL';
+import axios from 'axios'
+import swal from 'sweetalert';
 
 
 const { SearchBar } = Search;
+
+const deleteHandler = (id) => {
+
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this imaginary file!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                axios.delete(`${API_URL}user/delete-user/${id}`)
+                    .then(response => console.log(response.data.message))
+                    .catch(error => console.log(error))
+                swal("Poof! Your data has been deleted!", {
+                    icon: "success",
+                });
+            } else {
+                swal("Your data is safe!");
+            }
+        });
+}
 
 const columns = [{
     dataField: 'id',
@@ -72,7 +98,7 @@ const columns = [{
                         <ion-icon name="bulb-outline"></ion-icon>
                     </Button>
                 </Link>
-                <Button color='danger' size='sm' style={{ margin: "10px" }} >
+                <Button color='danger' size='sm' style={{ margin: "10px" }} onClick={() => deleteHandler(row.id)} >
                     <ion-icon name="trash-outline"></ion-icon>
                 </Button>
             </div>
@@ -86,7 +112,7 @@ const Table = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchUsersAsync())
+        (fetchUsersAsync(dispatch))
         console.log(usersList)
     }, [])
 
@@ -108,6 +134,7 @@ const Table = () => {
                                 <div>
                                     <Link to="/create-user" >
                                         <Button color='primary' size='sm' style={{ margin: "10px" }} >
+                                            <label htmlFor="">add new user.....</label>
                                             <ion-icon name="person-add-outline"></ion-icon>
                                         </Button>
                                     </Link>

@@ -1,10 +1,15 @@
 import React from 'react'
+import { Container } from 'reactstrap'
+import FormComponent from '../components/FormComponent'
+
 
 const CreateUser = () => {
+
     return (
-        <div>
-            <h1>Create User page</h1>
-        </div>
+        <Container>
+            <h1>Add new user</h1>
+            <FormComponent />
+        </Container>
     )
 }
 
