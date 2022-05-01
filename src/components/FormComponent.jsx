@@ -4,8 +4,11 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createUser } from '../redux/users/userAction'
 import swal from 'sweetalert'
+import { useNavigate } from 'react-router-dom'
 
 const FormComponent = () => {
+
+    const navigate = useNavigate()
 
     const [name, setName] = useState('')
     const [gender, setGender] = useState('')
@@ -37,6 +40,8 @@ const FormComponent = () => {
         setGender('')
         setEmail('')
         setAge('')
+
+        navigate('/')
     }
 
     return (
