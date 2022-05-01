@@ -6,8 +6,11 @@ import API_URL from '../constants/URL'
 import { useDispatch } from 'react-redux'
 import { editUserAsync } from '../redux/users/userAction'
 import swal from 'sweetalert'
+import { useNavigate } from 'react-router-dom'
 
 const EditFormComponent = ({ id }) => {
+
+    const navigate = useNavigate()
 
     const [getUser, setGetUser] = useState()
     const [name, setEditName] = useState(getUser?.name)
@@ -39,6 +42,8 @@ const EditFormComponent = ({ id }) => {
         setEditGender(editedData.gender)
         setEditEmail(editedData.email)
         setEditAge(editedData.age)
+
+        navigate('/')
     }
 
     const dispatch = useDispatch()
