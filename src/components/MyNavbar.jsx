@@ -13,7 +13,7 @@ const MyNavbar = () => {
             >
                 <Link to="/" style={{ textDecoration: "none" }}>
                     <NavbarBrand  >
-                        Redux Crud Bitchis
+                        JSON bootstrap CRUD App
                     </NavbarBrand>
                 </Link>
                 <NavbarToggler onClick={function noRefCheck() { }} />
